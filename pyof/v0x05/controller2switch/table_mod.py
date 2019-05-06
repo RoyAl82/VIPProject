@@ -138,9 +138,9 @@ class TableModPropExperimenter(GenericStruct):
     # bytes of all-zero bytes
     experimenter_data = UBInt32()
 
-    def __int__(self, type=Type.OFPRPT_EXPERIMENTER, length=None, experimenter=None, exp_type=None,
+    def __int__(self, experimenter_type=Type.OFPRPT_EXPERIMENTER, length=None, experimenter=None, exp_type=None,
                 experimenter_data=None):
-        self.type = type
+        self.type = experimenter_type
         self.length = length
         self.experimenter = experimenter
         self.exp_type = exp_type
