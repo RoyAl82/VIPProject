@@ -88,9 +88,8 @@ MESSAGE_TYPES = {
 
     # Queue Configuration messages
     # Controller/Switch message
-    str(Type.OFPT_QUEUE_GET_CONFIG_REQUEST): QueueGetConfigRequest,
-    str(Type.OFPT_QUEUE_GET_CONFIG_REPLY): QueueGetConfigReply,
-
+    #str(Type.OFPT_QOFPT_QUEUE_GET_CONFIG_REQUEST): QueueGetConfigRequest,
+    #str(Type.OFPT_QUEUE_GET_CONFIG_REPLY): QueueGetConfigReply,
     # Controller role change request message
     # Controller/Switch message
     str(Type.OFPT_ROLE_REQUEST): RoleRequest,
