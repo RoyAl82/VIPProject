@@ -4,9 +4,10 @@ from enum import IntEnum
 
 # Local source tree imports
 from pyof.foundation.base import GenericMessage
-from pyof.v0x05.common.header import Header,Type
+from pyof.v0x05.common.header import Header, Type
 
 # Enums
+
 
 class RequestForwardReason(IntEnum):
     """
@@ -21,8 +22,10 @@ class RequestForwardReason(IntEnum):
 
 # Classes
 
+
 class RequestForwardHeader(GenericMessage):
     """Ofp Request Forward Header"""
+
     #: Type OFPT_REQUESTFORWARD
     header = Header(message_type=Type.OFPT_REQUESTFORWARD)
     #: Request being forwarded

@@ -5,8 +5,8 @@ from enum import IntEnum
 
 # Local source tree imports
 
-from pyof.foundation.base import GenericMessage, GenericStruct
-from pyof.foundation.basic_types import BinaryData, FixedTypeList, UBInt16, UBInt8, UBInt32, UBInt64, Pad
+from pyof.foundation.base import GenericMessage
+from pyof.foundation.basic_types import Pad, UBInt8
 from pyof.v0x05.common.header import Header, Type
 from pyof.v0x05.controller2switch.multipart_reply import TableDesc
 
@@ -30,7 +30,7 @@ class TableReason(IntEnum):
 
 class TableStatus(GenericMessage):
     """OpenFlow TableStatus Message OFPT_TABLE_STATUS.
-      A table config has changed in the datapath
+      A table config has changed in the datapath.
      """
 
     #: :class:`~pyof.v0x05.common.action.ActionHeader`: OpenFlow Header
@@ -47,9 +47,11 @@ class TableStatus(GenericMessage):
 
         Args:
             xid (int): xid to be used on the message header.
-            elements: List of elements - 0 or more
+            reason (int): One of OFPTR_*
+            table (TableDesc): New table config.
         """
         super().__init__(xid)
         self.reason = reason
         self.table = table
+
 

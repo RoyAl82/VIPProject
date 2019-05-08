@@ -5,7 +5,7 @@ from enum import IntEnum
 
 # Local source tree imports
 from pyof.foundation.base import GenericMessage, GenericStruct
-from pyof.foundation.basic_types import BinaryData, FixedTypeList, UBInt16, UBInt8, UBInt32, UBInt64, Pad
+from pyof.foundation.basic_types import FixedTypeList, UBInt16, UBInt8, UBInt32, UBInt64, Pad
 from pyof.v0x05.common.header import Header, Type
 from pyof.v0x05.controller2switch.role_request import ControllerRole
 
@@ -61,19 +61,8 @@ class ListOfRoleProperties(FixedTypeList):
         super().__init__(pyof_class=RolePropHeader, items=items)
 
 
-
 class RoleStatusMsg(GenericMessage):
     """OpenFlow Controller Role Status Message OFPT_ROLE_REQUEST. """
-
-    """Assign parameters to object attributes.
-
-    Args:
-        xid (int): :class:`~pyof.v0x05.common.header.Header`'s xid.
-            Defaults to random.
-        generation_id (int): Master Election Generation Id
-        reason (int): One of OFPCRR_*.
-        role (int): One of OFPCR_ROLE_*
-    """
 
     #: Type OFPT_ROLE_STATUS
     header = Header(message_type=Type.OFPT_ROLE_STATUS)
@@ -116,11 +105,6 @@ class ExperimenterRoleProperty(RolePropHeader):
     #: Experimenter defined
     exp_type = UBInt32()
 
-    """Followed by:
-        - Exactly (length - 12) bytes containing the experimenter data, then
-        - Exactly (length + 7)/ 8 * 8 - (length) (between 0 and 7) bytes of all-zero bytes.
-    """
-
     experimenter_data = UBInt32()
 
     def __init__(self, experimenter=None, exp_type=None):
@@ -130,10 +114,6 @@ class ExperimenterRoleProperty(RolePropHeader):
         :param exp_type: Experimenter defined
         """
         super().__init__(role_type=RolePropertyType.OFPRPT_EXPERIMENTER)
-        # super().type = RolePropertyType.OFPRPT_EXPERIMENTER
-
         self.experimenter = experimenter
-
         self.exp_type = exp_type
-
         super().length = self.__sizeof__()

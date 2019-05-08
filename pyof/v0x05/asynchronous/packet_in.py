@@ -5,7 +5,7 @@ from enum import IntEnum
 
 from pyof.foundation.base import GenericMessage
 from pyof.foundation.basic_types import (
-    BinaryData, Pad, UBInt8, UBInt16, UBInt32, UBInt64)
+    BinaryData, UBInt8, UBInt16, UBInt32, UBInt64)
 from pyof.v0x05.common.flow_match import Match, OxmOfbMatchField
 from pyof.v0x05.common.header import Header, Type
 
@@ -34,7 +34,6 @@ class PacketInReason(IntEnum):
     OFPR_PACKET_OUT = 5
 
 
-
 # Classes
 
 
@@ -55,18 +54,13 @@ class PacketIn(GenericMessage):
     cookie = UBInt64()
     #: Packet metadata. Variable size.
     match = Match()
-    """ The variable size and padded match is always followed by:
-        - Exactly 2 all-zero padding bytes, then
-        - An Ethernet frame whose length is inferred from header.length.
-        The padding bytes preceding the ethernet frame ensure that the IP
-        header (if any) following the Ethernet header is 32 bits aligned.
-    """
+
     #: Align to 64 bit + 16 bit
-    # pad = Pad(2)
+    #: pad = Pad(2)
     #: Ethernet frame whose length is inferred from header.length.
     #: The padding bytes preceding the Ethernet frame ensure that the IP
     #: header (if any) following the Ethernet header is 32-bit aligned.
-    # data = BinaryData()
+    data = BinaryData()
 
     def __init__(self, xid=None, buffer_id=None, total_len=None, reason=None,
                  table_id=None, cookie=None, match=None, data=b''):
@@ -95,7 +89,7 @@ class PacketIn(GenericMessage):
         self.table_id = table_id
         self.cookie = cookie
         self.match = match
-        # self.data = data
+        self.data = data
 
     @property
     def in_port(self):

@@ -114,10 +114,10 @@ class BadMatchCode(IntEnum):
     #: Match uses an unsupported tag/encap.
     OFPBMC_BAD_TAG = 2
     #: Unsupported datalink addr mask - switch does not support arbitrary
-    #:   datalink address mask.
+    #: datalink address mask.
     OFPBMC_BAD_DL_ADDR_MASK = 3
     #: Unsupported network addr mask - switch does not support arbitrary
-    #:   network address mask.
+    #: network address mask.
     OFPBMC_BAD_NW_ADDR_MASK = 4
     #: Unsupported combination of fields masked or omitted in the match.
     OFPBMC_BAD_WILDCARDS = 5
@@ -126,7 +126,7 @@ class BadMatchCode(IntEnum):
     #: Unsupported value in a match field.
     OFPBMC_BAD_VALUE = 7
     #: Unsupported mask specified in the match, field is not dl-address or
-    #:   nw-address.
+    #: nw-address.
     OFPBMC_BAD_MASK = 8
     #: A prerequisite was not met.
     OFPBMC_BAD_PREREQ = 9
@@ -244,10 +244,10 @@ class ErrorType(IntEnum):
                    'OFPET_METER_MOD_FAILED': MeterModFailedCode,
                    'OFPET_TABLE_MOD_FAILED': TableModFailedCode,
                    'OFPET_TABLE_FEATURES_FAILED': TableFeaturesFailedCode,
-                   'OFPET_BAD_PROPERTY' : BadPropertyCode,
-                   'OFPET_ASYNC_CONFIG_FAILED' : AsyncConfigFailedCode,
-                   'OFPET_FLOW_MONITOR_FAILED' : FlowMonitorFailedCode,
-                   'OFPET_BUNDLE_FAILED' : BundleFailedCode}
+                   'OFPET_BAD_PROPERTY': BadPropertyCode,
+                   'OFPET_ASYNC_CONFIG_FAILED': AsyncConfigFailedCode,
+                   'OFPET_FLOW_MONITOR_FAILED': FlowMonitorFailedCode,
+                   'OFPET_BUNDLE_FAILED': BundleFailedCode}
         return classes.get(self.name, GenericFailedCode)
 
 
@@ -288,7 +288,7 @@ class GroupModFailedCode(IntEnum):
     """
 
     #: Group not added because a group ADD attempted to replace an
-    #:   already-present group.
+    #: already-present group.
     FPGMFC_GROUP_EXISTS = 0
     #: Group not added because Group specified is invalid.
     OFPGMFC_INVALID_GROUP = 1
@@ -305,7 +305,7 @@ class GroupModFailedCode(IntEnum):
     #: Group entry would cause a loop.
     OFPGMFC_LOOP = 7
     #: Group not modified because a group MODIFY attempted to modify a
-    #:   non-existent group.
+    #: non-existent group.
     OFPGMFC_UNKNOWN_GROUP = 8
     #: Group not deleted because another group is forwarding to it.
     OFPGMFC_CHAINED_GROUP = 9
@@ -342,12 +342,12 @@ class MeterModFailedCode(IntEnum):
     #: Unspecified error.
     OFPMMFC_UNKNOWN = 0
     #: Meter not added because a Meter ADD * attempted to replace an existing
-    #:     Meter.
+    #: Meter.
     OFPMMFC_METER_EXISTS = 1
     #: Meter not added because Meter specified * is invalid.
     OFPMMFC_INVALID_METER = 2
     #: Meter not modified because a Meter MODIFY attempted to modify a
-    #:     non-existent Meter.
+    #: non-existent Meter.
     OFPMMFC_UNKNOWN_METER = 3
     #: Unsupported or unknown command.
     OFPMMFC_BAD_COMMAND = 4
@@ -482,8 +482,8 @@ class BadPropertyCode(IntEnum):
 class AsyncConfigFailedCode(IntEnum):
     """Error_msg 'code' values for OFPET_ASYNC_CONFIG_FAILED.
 
-        'data' contains at least the first 64 bytes of the failed request.
-        """
+    'data' contains at least the first 64 bytes of the failed request.
+    """
 
     #: One mask is invalid.
     OFPACFC_INVALID = 0
@@ -496,8 +496,8 @@ class AsyncConfigFailedCode(IntEnum):
 class FlowMonitorFailedCode(IntEnum):
     """Error_msg 'code' values for OFPET_FLOW_MONITOR_FAILED.
 
-        'data' contains at least the first 64 bytes of the failed request.
-        """
+    'data' contains at least the first 64 bytes of the failed request.
+    """
 
     #: Unspecified error.
     OFPMOFC_UNKNOWN = 0
@@ -521,8 +521,8 @@ class FlowMonitorFailedCode(IntEnum):
 class BundleFailedCode(IntEnum):
     """Error_msg 'code' values for OFPET_BUNDLE_FAILED.
 
-            'data' contains at least the first 64 bytes of the failed request.
-            """
+    'data' contains at least the first 64 bytes of the failed request.
+    """
 
     #: Unspecified error.
     OFPBFC_UNKNOWN = 0
